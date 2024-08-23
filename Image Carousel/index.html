@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+
+            50% {
+                transform: none;
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div
+        class="bg-gradient-to-br from-green-400 to-blue-400 p-0 m-0 flex justify-center items-center min-h-screen flex-col">
+        <img id="image" src="images\1.png"
+            class="h-[500px] w-[500px] hover:shadow-lg transition-all duration-300 border border-white/40 mb-[40px] ">
+
+        <button id="bouncy"
+            class="bg-gradient-to-br from-purple-600 to-red-700 font-medium text-3xl py-[15px] text-slate-200 w-[350px] rounded-3xl transition-all duration-300 hover:from-purple-300 hover:to-red-400 hover:shadow-2xl hover:w-[370px] hover:py-[18px] active:scale-95 mb-[20px]"
+            onclick="nextcar()">Next</button>
+
+        <button
+            class="bg-gradient-to-br from-purple-600 to-red-700 font-medium text-3xl py-[15px] text-slate-200 w-[350px] rounded-3xl transition-all duration-300 hover:from-purple-300 hover:to-red-400 hover:shadow-2xl hover:w-[370px] hover:py-[18px] active:scale-95 mb-[20px] "
+            onclick="prevcar()">Previous</button>
+        <button
+            class="bg-gradient-to-br from-[#222] to-[#222] font-medium text-3xl py-[15px] text-slate-200 w-[350px] rounded-3xl transition-all duration-300 hover:shadow-2xl hover:w-[370px] hover:py-[18px] active:scale-95 "
+            onclick="toggleBounce()">Boing Boing</button>
+
+    </div>
+
+    <script>
+        const getImg = document.querySelector("#image");
+        const allcars = [
+            "images/1.png",
+            "images/2.png",
+            "images/3.jpg",
+            "images/4.jpg",
+            "images/5.png",
+            "images/6.png",
+            "images/7.jpg",
+            "images/8.jpg",
+            "images/9.png",
+            "images/10.jpg",
+            "images/11.jpg",
+            "images/12.jpg",
+            "images/13.jpg",
+            "images/14.jpg",
+            "images/15.jpg",
+            "images/16.png",
+            "images/17.jpg",
+            "images/18.jpg",
+            "images/19.jpg",
+            "images/20.jpg",
+            "images/21.jpg",
+            "images/22.jpg",
+            "images/23.png",
+            "images/24.png",
+            "images/25.gif",
+            "images/26.gif",
+        ];
+        let index = 0;
+        function nextcar() {
+            index++;
+            if (index < allcars.length) {
+                getImg.src = allcars[index];
+            }
+            else if (index >= allcars.length) {
+                index = 0;
+                getImg.src = allcars[index]
+            }
+        }
+
+        function prevcar() {
+            index--;
+            if (index >= 0) {
+                getImg.src = allcars[index];
+            }
+            else if (index < 0) {
+                index = allcars.length - 1;
+                getImg.src = allcars[index];
+            }
+        }
+
+        function toggleBounce(){
+            getImg.classList.toggle("animate-bounce");
+        }
+    </script>
+</body>
+
+</html>
